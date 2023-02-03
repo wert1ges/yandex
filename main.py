@@ -47,7 +47,16 @@ def show_map():
     pic = pygame.image.load('map.png')
     os.remove('map.png')
 
-
+def ch_coor(butt):
+    global coords
+    if butt == "U":
+        coords = [coords[0], coords[1] + (1 / 10)]
+    if butt == "R":
+        coords = [coords[0] + (1 / 10), coords[1]]
+    if butt == "D":
+        coords = [coords[0], coords[1] - (1 / 10)]
+    if butt == "L":
+        coords = [coords[0] - (1 / 10), coords[1]]
 spn = [0.5, 0.5]
 coords = [37.1, 57.1]
 type_map = "map"
@@ -62,25 +71,25 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.KEYDOWN:
-            if event.key == 109: 
+            if event.key == pygame.K_m:
                 change_map()
                 show_map()
-            elif event.key == 281:
+            elif event.key == pygame.K_PAGEUP:
                 change_spn(True)
                 show_map()
-            elif event.key == 280:
+            elif event.key == pygame.K_PAGEDOWN:
                 change_spn(False)
                 show_map()
-            elif event.key == 273:
+            elif event.key == pygame.K_UP:
                 change_coords("U")
                 show_map()
-            elif event.key == 276:
+            elif event.key == pygame.K_LEFT:
                 change_coords("L")
                 show_map()
-            elif event.key == 274:
+            elif event.key == pygame.K_DOWN:
                 change_coords("D")
                 show_map()
-            elif event.key == 275:
+            elif event.key == pygame.K_RIGHT:
                 change_coords("R")
                 show_map()
     pygame.display.flip()
